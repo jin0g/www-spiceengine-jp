@@ -12,14 +12,14 @@ gtag('config', 'G-QH7CLHB1S8');
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>株式会社スパイスエンジン | AI Infrastructure</title>
-<meta name="description" content="FPGAからASICまで。AIアプリケーションの速度と効率を高める、株式会社スパイスエンジン。主力製品はAIアクセラレータ「RASNA」とAI音声通話アプリ「PuwaPuwaVoice」。"/>
+<meta name="description" content="FPGAからASICまで。AIアクセラレータ「RASNA」、Diffusion LLM実装「SILRA」、AI音声通話アプリ「PuwaPuwaVoice」の3事業を展開する、株式会社スパイスエンジン。"/>
 <meta property="og:title" content="世界最速を目指す、AI基盤。"/>
-<meta property="og:description" content="FPGAからASICまで。SpiceEngineのAI Infrastructure。"/>
-<meta property="og:image" content="https://www.spiceengine.jp/rasna.png"/>
+<meta property="og:description" content="FPGAからASICまで。RASNA／SILRA／PuwaPuwaVoiceの3本軸でAIの速度と効率を高める、Spice EngineのAI Infrastructure。"/>
+<meta property="og:image" content="https://www.spiceengine.jp/og.png"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="世界最速を目指す、AI基盤。"/>
-<meta name="twitter:description" content="FPGAからASICまで。SpiceEngineのAI Infrastructure。"/>
-<meta name="twitter:image" content="https://www.spiceengine.jp/rasna.png"/>
+<meta name="twitter:description" content="FPGAからASICまで。RASNA／SILRA／PuwaPuwaVoiceの3本軸でAIの速度と効率を高める、Spice EngineのAI Infrastructure。"/>
+<meta name="twitter:image" content="https://www.spiceengine.jp/og.png"/>
 <link rel="icon" href="/favicon.svg"/>
 <style>
 :root{
@@ -31,6 +31,12 @@ gtag('config', 'G-QH7CLHB1S8');
   --accent:#b8430c;
   --accent-dark:#8f3409;
   --accent-soft:#fbf0e6;
+  --teal:#0e6e64;
+  --teal-dark:#0a554d;
+  --teal-soft:#e7f4f1;
+  --pink:#c2437e;
+  --pink-dark:#9c3464;
+  --pink-soft:#fdeef5;
   --radius:16px;
   --max:1080px;
 }
@@ -45,6 +51,7 @@ img{max-width:100%;height:auto;display:block}
 a{color:var(--accent)}
 a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+svg text{font-family:inherit}
 
 /* header */
 .site-header{
@@ -75,7 +82,7 @@ a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
   font-size:clamp(2rem,6vw,3.4rem);line-height:1.35;margin:0 0 20px;font-weight:800;letter-spacing:.02em;
 }
 .hero h1 em{font-style:normal;color:var(--accent)}
-.hero-lead{font-size:clamp(1rem,2.6vw,1.15rem);color:var(--muted);margin:0 auto 32px;max-width:760px}
+.hero-lead{font-size:clamp(1rem,2.6vw,1.15rem);color:var(--muted);margin:0 auto 32px;max-width:800px}
 .hero-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
 .button{
   display:inline-block;text-decoration:none;font-weight:700;border-radius:999px;padding:13px 30px;font-size:1rem;
@@ -86,22 +93,101 @@ a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 .button.ghost:hover{background:var(--accent-soft)}
 .metrics{
   display:grid;grid-template-columns:repeat(3,1fr);gap:16px;
-  max-width:820px;margin:52px auto 0;
+  max-width:900px;margin:52px auto 0;
 }
 .metrics>div{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px 10px}
-.metrics strong{font-size:clamp(1.9rem,5vw,2.6rem);line-height:1;color:var(--accent);font-weight:800}
+.metrics .m-label{font-size:.72rem;font-weight:700;letter-spacing:.22em;margin:0 0 6px}
+.metrics strong{font-size:clamp(1.9rem,5vw,2.6rem);line-height:1;color:var(--ink);font-weight:800}
 .metrics strong span{font-size:.45em;margin-left:2px}
 .metrics p{margin:8px 0 0;color:var(--muted);font-size:.88rem;line-height:1.6}
+.metrics .m-rasna{color:var(--accent)}
+.metrics .m-silra{color:var(--teal)}
+.metrics .m-puwa{color:var(--pink)}
 
 /* sections */
 section.block{padding:64px 0}
 section.block.alt{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .section-head{text-align:center;margin-bottom:40px}
 .section-label{font-size:.8rem;font-weight:700;letter-spacing:.28em;color:var(--accent);margin:0 0 10px}
+.section-label.teal{color:var(--teal)}
+.section-label.pink{color:var(--pink)}
 .section-head h2{font-size:clamp(1.55rem,4.4vw,2.3rem);line-height:1.45;margin:0;font-weight:800}
+.section-head h2 small{font-size:.55em;color:var(--muted);font-weight:700;margin-left:10px;letter-spacing:.06em}
 .section-head p{color:var(--muted);margin:14px 0 0}
 .body-text{max-width:var(--max);margin:0 auto}
 .body-text p{margin:0 0 1em}
+.body-text p:last-child{margin-bottom:0}
+
+/* expertise chips */
+.chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:30px}
+.chips span{
+  font-size:.85rem;font-weight:700;letter-spacing:.06em;
+  border:1px solid var(--line);border-radius:999px;padding:6px 16px;color:var(--ink);background:var(--surface);
+}
+section.block.alt .chips span{background:var(--bg)}
+
+/* pillar overview cards */
+.pillar-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.pillar-card{
+  background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:28px 24px;
+  display:flex;flex-direction:column;gap:10px;text-decoration:none;color:var(--ink);
+  border-top:6px solid var(--accent);
+}
+section.block .pillar-card{background:var(--surface)}
+.pillar-card:hover{box-shadow:0 10px 28px rgba(31,36,48,.08)}
+.pillar-card.silra{border-top-color:var(--teal)}
+.pillar-card.puwa{border-top-color:var(--pink)}
+.pillar-card .p-badge{font-size:.72rem;font-weight:700;letter-spacing:.18em;color:var(--accent)}
+.pillar-card.silra .p-badge{color:var(--teal)}
+.pillar-card.puwa .p-badge{color:var(--pink)}
+.pillar-card h3{margin:0;font-size:1.45rem;line-height:1.35}
+.pillar-card h3 small{display:block;font-size:.85rem;color:var(--muted);font-weight:600;margin-top:2px}
+.pillar-card p{margin:0;color:var(--muted);font-size:.95rem}
+.pillar-card .p-metric{margin-top:auto;padding-top:10px;font-weight:800;font-size:1.05rem}
+.pillar-card .p-metric span{display:block;font-weight:600;font-size:.8rem;color:var(--muted)}
+.pillar-card .p-more{font-weight:700;color:var(--accent);font-size:.92rem}
+.pillar-card.silra .p-more{color:var(--teal)}
+.pillar-card.puwa .p-more{color:var(--pink)}
+
+/* figures (SVG diagrams) */
+.figure{margin:36px 0 0}
+.figure .diagram{
+  background:var(--bg);border:1px solid var(--line);border-radius:20px;padding:26px 22px;
+}
+section.block.alt .figure .diagram{background:var(--bg)}
+.figure svg{width:100%;height:auto;display:block}
+.figure figcaption{
+  color:var(--muted);font-size:.9rem;line-height:1.7;margin-top:14px;text-align:center;max-width:860px;margin-left:auto;margin-right:auto;
+}
+.figure figcaption strong{color:var(--ink)}
+
+/* tables */
+.table-scroll{overflow-x:auto;margin-top:36px}
+table.spec{
+  width:100%;border-collapse:collapse;background:var(--surface);
+  border:1px solid var(--line);border-radius:14px;overflow:hidden;font-size:.95rem;min-width:560px;
+}
+table.spec caption{
+  text-align:left;font-weight:800;font-size:1.02rem;padding:0 2px 12px;caption-side:top;
+}
+table.spec th,table.spec td{padding:12px 16px;border-top:1px solid var(--line);text-align:left;vertical-align:top;line-height:1.65}
+table.spec thead th{background:var(--accent-soft);border-top:none;font-size:.88rem;letter-spacing:.04em}
+table.spec thead.teal th{background:var(--teal-soft)}
+table.spec thead.pink th{background:var(--pink-soft)}
+table.spec tbody th{width:180px;font-weight:700;background:var(--bg);white-space:nowrap}
+table.spec td strong{color:var(--accent-dark)}
+table.spec td .num{font-weight:800}
+.note{color:var(--muted);font-size:.85rem;margin-top:12px;line-height:1.7}
+
+/* key points list */
+.points{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
+.point{background:var(--bg);border:1px solid var(--line);border-radius:var(--radius);padding:22px}
+section.block.alt .point{background:var(--bg)}
+.point h3{margin:0 0 6px;font-size:1.05rem}
+.point h3 .k{color:var(--accent)}
+.point.teal h3 .k{color:var(--teal)}
+.point.pink h3 .k{color:var(--pink)}
+.point p{margin:0;color:var(--muted);font-size:.92rem}
 
 /* technology steps */
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
@@ -109,38 +195,6 @@ section.block.alt{background:var(--surface);border-top:1px solid var(--line);bor
 .step .num{font-size:.8rem;font-weight:700;letter-spacing:.2em;color:var(--accent)}
 .step h3{margin:8px 0 6px;font-size:1.12rem}
 .step p{margin:0;color:var(--muted);font-size:.95rem}
-
-/* products */
-.product-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-.product-card{
-  background:var(--surface);border:1px solid var(--line);border-radius:20px;overflow:hidden;
-  display:flex;flex-direction:column;
-}
-section.block .product-card{background:var(--bg)}
-section.block.alt .product-card{background:var(--surface)}
-.product-visual{border-bottom:1px solid var(--line)}
-.product-visual img{width:100%;height:100%;object-fit:cover}
-.puwa-visual{
-  min-height:220px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
-  background:linear-gradient(135deg,#ffe9f2 0%,#fff4e0 55%,#e8f6ff 100%);padding:32px 16px;text-align:center;
-}
-.puwa-visual .puwa-name{font-size:clamp(1.7rem,4.5vw,2.3rem);font-weight:800;color:#c2437e;letter-spacing:.02em;line-height:1.3}
-.puwa-visual .puwa-sub{color:#7a5a68;font-size:.92rem}
-.product-body{padding:26px 26px 30px;display:flex;flex-direction:column;gap:12px;flex:1}
-.product-badge{
-  align-self:flex-start;font-size:.72rem;font-weight:700;letter-spacing:.18em;color:var(--accent);
-  background:var(--accent-soft);border-radius:999px;padding:3px 12px;
-}
-.product-body h3{margin:0;font-size:1.5rem;line-height:1.4}
-.product-body h3 small{font-size:.95rem;color:var(--muted);font-weight:600;margin-left:6px}
-.product-body p{margin:0;color:var(--ink)}
-.product-body ul{margin:4px 0 0;padding-left:1.2em;color:var(--muted)}
-.product-body li{margin:2px 0}
-.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:2px}
-.tags span{font-size:.72rem;font-weight:700;letter-spacing:.08em;border:1px solid var(--line);border-radius:999px;padding:3px 10px;color:var(--muted);background:var(--surface)}
-.product-link{margin-top:auto;padding-top:8px}
-.product-link a{font-weight:700;text-decoration:none}
-.product-link a:hover{text-decoration:underline}
 
 /* founder */
 .founder-grid{display:grid;grid-template-columns:300px 1fr;gap:36px;align-items:start}
@@ -176,8 +230,11 @@ section.block.alt .product-card{background:var(--surface)}
 .site-footer a{font-size:.88rem}
 
 /* responsive */
+@media (max-width:900px){
+  .pillar-grid{grid-template-columns:1fr}
+  .points{grid-template-columns:1fr}
+}
 @media (max-width:820px){
-  .product-grid{grid-template-columns:1fr}
   .steps{grid-template-columns:1fr}
   .founder-grid{grid-template-columns:1fr}
   .founder-photo{max-width:320px;margin:0 auto}
@@ -193,6 +250,7 @@ section.block.alt .product-card{background:var(--surface)}
   .career>div{flex-direction:column;gap:0}
   .career dt{flex:none}
   .button{padding:12px 22px}
+  table.spec tbody th{width:120px;white-space:normal}
 }
 </style>
 </head>
@@ -203,8 +261,10 @@ section.block.alt .product-card{background:var(--surface)}
     <a class="brand" href="#top" aria-label="SpiceEngine ホーム"><img src="/logo.png" alt=""/><span>SPICE ENGINE</span></a>
     <nav class="main-nav" aria-label="メインナビゲーション">
       <a href="#mission">Mission</a>
-      <a href="#technology">Technology</a>
-      <a href="#products">Products</a>
+      <a href="#business">Business</a>
+      <a href="#rasna">RASNA</a>
+      <a href="#silra">SILRA</a>
+      <a href="#puwa">PuwaPuwaVoice</a>
       <a href="#founder">Founder</a>
       <a href="#company">Company</a>
       <a class="nav-contact" href="https://docs.google.com/forms/d/e/1FAIpQLSclg_9IMWsu9Ar89q9FXXtZaELc6WRtHxWY1J6L00wCvOVEnQ/viewform" target="_blank" rel="noreferrer">Contact ↗</a>
@@ -218,15 +278,15 @@ section.block.alt .product-card{background:var(--surface)}
     <div class="wrap">
       <p class="eyebrow">AI INFRASTRUCTURE</p>
       <h1>世界最速を目指す、<em>AI基盤。</em></h1>
-      <p class="hero-lead">FPGAからASICまで。ハードウェアアクセラレーションで、AIアプリケーションの速度と効率を根底から変える。</p>
+      <p class="hero-lead">FPGAからASICまで。ハードウェアアクセラレーションで、AIアプリケーションの速度と効率を根底から変える。スパイスエンジンは、AIアクセラレータ「RASNA」、Diffusion LLM実装「SILRA」、AI音声通話アプリ「PuwaPuwaVoice」の3事業を展開しています。</p>
       <div class="hero-actions">
-        <a class="button primary" href="#products">製品を見る</a>
+        <a class="button primary" href="#business">事業を見る</a>
         <a class="button ghost" href="https://docs.google.com/forms/d/e/1FAIpQLSclg_9IMWsu9Ar89q9FXXtZaELc6WRtHxWY1J6L00wCvOVEnQ/viewform" target="_blank" rel="noreferrer">技術相談・協業 ↗</a>
       </div>
-      <div class="metrics" aria-label="主要な技術指標">
-        <div><strong>21<span>×</span></strong><p>Jetson比<br/>CNN推論性能</p></div>
-        <div><strong>1<span>ms</span></strong><p>画像認識<br/>レイテンシ目標</p></div>
-        <div><strong>&lt;5<span>W</span></strong><p>省電力の<br/>価値指標</p></div>
+      <div class="metrics" aria-label="3事業の主要指標">
+        <div><p class="m-label m-rasna">RASNA</p><strong>1<span>ms未満</span></strong><p>ResNet50推論レイテンシ目標<br/>（DRAM-to-DRAM）</p></div>
+        <div><p class="m-label m-silra">SILRA</p><strong>39.70</strong><p>Perplexity（スパース率0.3776<br/>の圧縮検証を通過）</p></div>
+        <div><p class="m-label m-puwa">PUWAPUWAVOICE</p><strong>約1<span>秒</span></strong><p>音声応答レイテンシ目標<br/>（自然な会話テンポの実現へ）</p></div>
       </div>
     </div>
   </section>
@@ -239,20 +299,318 @@ section.block.alt .product-card{background:var(--surface)}
       </div>
       <div class="body-text">
         <p>データフローアーキテクチャと専用ハードウェア設計を組み合わせ、CPU/GPUのオーバーヘッドを抑制。帯域とメモリを用途ごとに最適化し、性能と電力効率の両立を目指します。</p>
-        <p>スパイスエンジンは、研究成果を実世界で使える計算基盤へと育てる会社です。ハードウェアアクセラレータ「RASNA」の研究開発と、その技術と知見を活かしたAI音声通話アプリ「PuwaPuwaVoice」の開発を、二本の柱として進めています。</p>
+        <p>スパイスエンジンは、研究成果を実世界で使える計算基盤へと育てる会社です。代表の神宮司明良は理化学研究所 計算科学研究センター（RIKEN R-CCS）の研究員として機械学習アクセラレータの研究に携わり、その知見を産業応用へつなげています。モデルの圧縮（スパース化・量子化）からハードウェア実装、そしてアプリケーションまでを一貫して手がけられることが、当社の強みです。</p>
       </div>
+      <div class="chips" aria-label="専門領域">
+        <span>FPGA</span><span>HLS（高位合成）</span><span>コンパイラ</span><span>スパース化・量子化</span><span>CNNアクセラレータ</span><span>LLMアクセラレータ</span><span>CGRA</span><span>データフローアーキテクチャ</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="business">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">02 — BUSINESS</p>
+        <h2>3つの事業</h2>
+        <p>ハードウェアからアプリケーションまで。「速くする」技術を、3本の軸で届けます。</p>
+      </div>
+      <div class="pillar-grid">
+        <a class="pillar-card" href="#rasna">
+          <span class="p-badge">AI ACCELERATOR</span>
+          <h3>RASNA<small>ラズナ — CNN推論アクセラレータ</small></h3>
+          <p>95%スパース化したResNet50を、Kria KV260上で1ms未満で推論する専用ハードウェア。重みと命令をチップ上に常駐させ、DRAMアクセスを入出力だけに絞ります。</p>
+          <p class="p-metric">1ms未満<span>ResNet50推論レイテンシ目標（DRAM-to-DRAM）</span></p>
+          <span class="p-more">詳しく見る →</span>
+        </a>
+        <a class="pillar-card silra" href="#silra">
+          <span class="p-badge">DIFFUSION LLM</span>
+          <h3>SILRA<small>シルラ — Diffusion LLMのFPGA実装</small></h3>
+          <p>次世代の言語モデル「Diffusion LLM」をスパース化・量子化し、KV260に実装する研究開発。通常の自己回帰型LLMより高速な推論を目指します。</p>
+          <p class="p-metric">Perplexity 39.70<span>スパース率0.3776の圧縮検証を通過</span></p>
+          <span class="p-more">詳しく見る →</span>
+        </a>
+        <a class="pillar-card puwa" href="#puwa">
+          <span class="p-badge">AI VOICE APP</span>
+          <h3>PuwaPuwaVoice<small>プワプワボイス — AI音声通話アプリ</small></h3>
+          <p>好きなキャラクターと電話のように音声で会話できるiPhoneアプリ。応答約1秒の自然な会話テンポを目標に開発中です。</p>
+          <p class="p-metric">2026年12月24日<span>正式リリース予定（現在TestFlightでベータテスト中）</span></p>
+          <span class="p-more">詳しく見る →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="block alt" id="rasna">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">03 — RASNA</p>
+        <h2>RASNA<small>ラズナ</small></h2>
+        <p>95%スパースなResNet50を、1ms未満で推論するAIアクセラレータ。</p>
+      </div>
+      <div class="body-text">
+        <p>RASNAは、CNN推論のための専用ハードウェア（FPGAアクセラレータ）です。モデルの重みの95%がゼロである「スパース（疎）なResNet50」を対象に、ゼロの重みに対する演算を丸ごとスキップし、重みと命令をチップ上に常駐させることで、外部メモリ（DRAM）へのアクセスを入力画像と推論結果だけに絞り込みます。これにより、画像がDRAMにある状態から結果をDRAMへ書き戻すまで（DRAM-to-DRAM）のレイテンシ1.0ms未満を目指しています。</p>
+        <p>検証基盤はXilinx Kria KV260。エッジデバイスの限られた電力とメモリ帯域の中で、画像認識をリアルタイムに実行するための設計を、実機で測定しながら磨き上げています。</p>
+      </div>
+
+      <figure class="figure">
+        <div class="diagram">
+          <svg viewBox="0 0 960 320" role="img" aria-label="RASNAの動作の仕組み図">
+            <defs>
+              <marker id="arr-r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                <path d="M0,0 L10,5 L0,10 z" fill="#b8430c"/>
+              </marker>
+            </defs>
+            <rect x="8" y="110" width="150" height="80" rx="12" fill="#ffffff" stroke="#e7e1d3" stroke-width="2"/>
+            <text x="83" y="143" text-anchor="middle" font-size="17" font-weight="700" fill="#1f2430">DRAM</text>
+            <text x="83" y="168" text-anchor="middle" font-size="14" fill="#57607a">入力画像</text>
+            <line x1="162" y1="150" x2="238" y2="150" stroke="#b8430c" stroke-width="2.5" marker-end="url(#arr-r)"/>
+            <rect x="246" y="40" width="468" height="220" rx="16" fill="#fff7f0" stroke="#b8430c" stroke-width="2"/>
+            <text x="480" y="72" text-anchor="middle" font-size="17" font-weight="700" fill="#8f3409">Xilinx Kria KV260 — RASNA</text>
+            <rect x="286" y="92" width="388" height="52" rx="10" fill="#ffffff" stroke="#e7e1d3" stroke-width="2"/>
+            <text x="480" y="124" text-anchor="middle" font-size="15" fill="#1f2430">重み・命令はチップ上に常駐</text>
+            <rect x="286" y="160" width="388" height="52" rx="10" fill="#ffffff" stroke="#e7e1d3" stroke-width="2"/>
+            <text x="480" y="192" text-anchor="middle" font-size="15" fill="#1f2430">スパース演算アレイ（ゼロを計算しない）</text>
+            <line x1="718" y1="150" x2="794" y2="150" stroke="#b8430c" stroke-width="2.5" marker-end="url(#arr-r)"/>
+            <rect x="802" y="110" width="150" height="80" rx="12" fill="#ffffff" stroke="#e7e1d3" stroke-width="2"/>
+            <text x="877" y="143" text-anchor="middle" font-size="17" font-weight="700" fill="#1f2430">DRAM</text>
+            <text x="877" y="168" text-anchor="middle" font-size="14" fill="#57607a">推論結果</text>
+            <text x="480" y="298" text-anchor="middle" font-size="14.5" fill="#57607a">DRAMへのアクセスは入力と出力のみ。だから、1msが見えてきます。</text>
+          </svg>
+        </div>
+        <figcaption><strong>RASNAの仕組み。</strong>通常の推論では、計算のたびに外部メモリから重みを読み出す時間が支配的になります。RASNAは重みと命令をチップの中に置きっぱなしにし、DRAMとのやり取りを最初と最後だけにすることで、この待ち時間を消しにいきます。</figcaption>
+      </figure>
+
+      <figure class="figure">
+        <div class="diagram">
+          <svg viewBox="0 0 960 250" role="img" aria-label="スパース化のイメージ図">
+            <defs>
+              <pattern id="dense" width="19" height="19" patternUnits="userSpaceOnUse">
+                <rect x="1" y="1" width="15" height="15" rx="3" fill="#dcb79e"/>
+              </pattern>
+              <pattern id="sparse" width="95" height="95" patternUnits="userSpaceOnUse">
+                <rect x="1" y="1" width="15" height="15" rx="3" fill="none" stroke="#e7e1d3" stroke-width="1.5"/>
+                <rect x="20" y="1" width="15" height="15" rx="3" fill="none" stroke="#e7e1d3" stroke-width="1.5"/>
+                <rect x="39" y="1" width="15" height="15" rx="3" fill="none" stroke="#e7e1d3" stroke-width="1.5"/>
+                <rect x="58" y="1" width="15" height="15" rx="3" fill="none" stroke="#e7e1d3" stroke-width="1.5"/>
+                <rect x="77" y="1" width="15" height="15" rx="3" fill="none" stroke="#e7e1d3" stroke-width="1.5"/>
+                <rect x="1" y="20" width="15" height="15" rx="3" fill="none" stroke="#e7e1d3" stroke-width="1.5"/>
+                <rect x="20" y="20" width="15" height="15" rx="3" fill="none" stroke="#e7e1d3" stroke-width="1.5"/>
+                <rect x="39" y="20" width="15" height="15" rx="3" fill="#b8430c"/>
+                <rect x="58" y="20" width="15" height="15" rx="3" fill="none" stroke="#e7e1d3" stroke-width="1.5"/>
+                <rect x="77" y="20" width="15" height="15" rx="3" fill="none" stroke="#e7e1d3" stroke-width="1.5"/>
+                <rect x="1" y="39" width="15" height="15" rx="3" fill="none" stroke="#e7e1d3" stroke-width="1.5"/>
+                <rect x="20" y="39" width="15" height="15" rx="3" fill="none" stroke="#e7e1d3" stroke-width="1.5"/>
+                <rect x="39" y="39" width="15" height="15" rx="3" fill="none" stroke="#e7e1d3" stroke-width="1.5"/>
+                <rect x="58" y="39" width="15" height="15" rx="3" fill="none" stroke="#e7e1d3" stroke-width="1.5"/>
+                <rect x="77" y="39" width="15" height="15" rx="3" fill="none" stroke="#e7e1d3" stroke-width="1.5"/>
+                <rect x="1" y="58" width="15" height="15" rx="3" fill="none" stroke="#e7e1d3" stroke-width="1.5"/>
+                <rect x="20" y="58" width="15" height="15" rx="3" fill="none" stroke="#e7e1d3" stroke-width="1.5"/>
+                <rect x="39" y="58" width="15" height="15" rx="3" fill="none" stroke="#e7e1d3" stroke-width="1.5"/>
+                <rect x="58" y="58" width="15" height="15" rx="3" fill="none" stroke="#e7e1d3" stroke-width="1.5"/>
+                <rect x="77" y="58" width="15" height="15" rx="3" fill="none" stroke="#e7e1d3" stroke-width="1.5"/>
+                <rect x="1" y="77" width="15" height="15" rx="3" fill="none" stroke="#e7e1d3" stroke-width="1.5"/>
+                <rect x="20" y="77" width="15" height="15" rx="3" fill="#b8430c"/>
+                <rect x="39" y="77" width="15" height="15" rx="3" fill="none" stroke="#e7e1d3" stroke-width="1.5"/>
+                <rect x="58" y="77" width="15" height="15" rx="3" fill="none" stroke="#e7e1d3" stroke-width="1.5"/>
+                <rect x="77" y="77" width="15" height="15" rx="3" fill="none" stroke="#e7e1d3" stroke-width="1.5"/>
+              </pattern>
+              <marker id="arr-r2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                <path d="M0,0 L10,5 L0,10 z" fill="#b8430c"/>
+              </marker>
+            </defs>
+            <text x="270" y="30" text-anchor="middle" font-size="16" font-weight="700" fill="#1f2430">通常のモデル（密）</text>
+            <rect x="110" y="48" width="320" height="152" rx="8" fill="url(#dense)"/>
+            <text x="690" y="30" text-anchor="middle" font-size="16" font-weight="700" fill="#8f3409">95%スパース（RASNAの対象）</text>
+            <rect x="530" y="48" width="320" height="152" rx="8" fill="url(#sparse)" stroke="#e7e1d3"/>
+            <line x1="442" y1="124" x2="518" y2="124" stroke="#b8430c" stroke-width="2.5" marker-end="url(#arr-r2)"/>
+            <text x="270" y="228" text-anchor="middle" font-size="14" fill="#57607a">全ての重みを計算する</text>
+            <text x="690" y="228" text-anchor="middle" font-size="14" fill="#57607a">残る5%だけを計算する</text>
+          </svg>
+        </div>
+        <figcaption><strong>95%スパースとは。</strong>学習済みモデルの重みのうち95%をゼロにした状態です。ゼロとの掛け算は結果に影響しないため、RASNAはその演算自体を行いません。計算量とメモリ転送量が大きく減り、精度は公開モデルでTop-1 73.14%を維持します。</figcaption>
+      </figure>
+
+      <div class="table-scroll">
+        <table class="spec">
+          <caption>RASNA — 目標と仕様</caption>
+          <tbody>
+            <tr><th>対象モデル</th><td>ResNet50（ImageNet）— 公式AC/DCの95%スパースモデルを採用</td></tr>
+            <tr><th>認識精度</th><td>Top-1 <span class="num">73.14%</span>（採用モデルの公表値）</td></tr>
+            <tr><th>スパース率</th><td><span class="num">95%</span>（重みの95%がゼロ）</td></tr>
+            <tr><th>レイテンシ目標</th><td><strong>1.0ms未満</strong>（DRAM-to-DRAM：画像がDRAMにある状態から、結果をDRAMへ書き戻すまで）</td></tr>
+            <tr><th>実行基盤</th><td>Xilinx Kria KV260（FPGA）</td></tr>
+            <tr><th>設計方針</th><td>重みと命令をチップ上に常駐させ、DRAMアクセスを入出力のみに限定。スパース化・量子化とデータフロー最適化を組み合わせる</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="points">
+        <div class="point"><h3><span class="k">■</span> ゼロを計算しない</h3><p>95%がゼロの重みは、演算そのものをスキップ。計算量とメモリ転送を同時に削減します。</p></div>
+        <div class="point"><h3><span class="k">■</span> DRAMに行かない</h3><p>重み・命令はオンチップに常駐。推論中のDRAMアクセスは入力画像と結果だけです。</p></div>
+        <div class="point"><h3><span class="k">■</span> 実機で磨く</h3><p>KV260実機で測定しながら反復改善。FPGAからIPコア化、ASIC展開まで見据えた設計です。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="silra">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label teal">04 — SILRA</p>
+        <h2>SILRA<small>シルラ</small></h2>
+        <p>Diffusion LLMを、エッジハードウェアで動かす。</p>
+      </div>
+      <div class="body-text">
+        <p>SILRAは、次世代の言語モデル「Diffusion LLM（拡散型言語モデル）」をFPGAに実装する研究開発です。現在の主流である自己回帰型LLMが1トークンずつ順番に文章を生成するのに対し、Diffusion LLMは文章全体を並列に更新しながら生成します。この並列性は専用ハードウェアと相性が良く、うまく実装できれば大幅な高速化が見込めます。</p>
+        <p>一方で、言語モデルはそのままではエッジデバイスに載りません。SILRAでは、モデルをスパース化・量子化して軽量化し、Xilinx Kria KV260への実装を進めています。モデル圧縮の検証フェーズでは、スパース率0.3776の圧縮でPerplexity 39.70（合格基準51.78以下）を記録し、検証を通過しました。現在はハードウェア実装フェーズに進んでいます。</p>
+      </div>
+
+      <figure class="figure">
+        <div class="diagram">
+          <svg viewBox="0 0 960 190" role="img" aria-label="SILRAのモデル圧縮パイプライン図">
+            <defs>
+              <marker id="arr-s" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                <path d="M0,0 L10,5 L0,10 z" fill="#0e6e64"/>
+              </marker>
+            </defs>
+            <rect x="0" y="40" width="160" height="90" rx="12" fill="#ffffff" stroke="#0e6e64" stroke-width="2"/>
+            <text x="80" y="78" text-anchor="middle" font-size="15.5" font-weight="700" fill="#1f2430">拡散型LLM</text>
+            <text x="80" y="104" text-anchor="middle" font-size="12.5" fill="#57607a">フル精度モデル</text>
+            <line x1="164" y1="85" x2="196" y2="85" stroke="#0e6e64" stroke-width="2.5" marker-end="url(#arr-s)"/>
+            <rect x="200" y="40" width="160" height="90" rx="12" fill="#ffffff" stroke="#0e6e64" stroke-width="2"/>
+            <text x="280" y="78" text-anchor="middle" font-size="15.5" font-weight="700" fill="#1f2430">スパース化</text>
+            <text x="280" y="104" text-anchor="middle" font-size="12.5" fill="#57607a">不要な重みを除去</text>
+            <line x1="364" y1="85" x2="396" y2="85" stroke="#0e6e64" stroke-width="2.5" marker-end="url(#arr-s)"/>
+            <rect x="400" y="40" width="160" height="90" rx="12" fill="#ffffff" stroke="#0e6e64" stroke-width="2"/>
+            <text x="480" y="78" text-anchor="middle" font-size="15.5" font-weight="700" fill="#1f2430">再学習・蒸留</text>
+            <text x="480" y="104" text-anchor="middle" font-size="12.5" fill="#57607a">精度を回復する</text>
+            <line x1="564" y1="85" x2="596" y2="85" stroke="#0e6e64" stroke-width="2.5" marker-end="url(#arr-s)"/>
+            <rect x="600" y="40" width="160" height="90" rx="12" fill="#ffffff" stroke="#0e6e64" stroke-width="2"/>
+            <text x="680" y="78" text-anchor="middle" font-size="15.5" font-weight="700" fill="#1f2430">量子化</text>
+            <text x="680" y="104" text-anchor="middle" font-size="12.5" fill="#57607a">INT8 / INT4</text>
+            <line x1="764" y1="85" x2="796" y2="85" stroke="#0e6e64" stroke-width="2.5" marker-end="url(#arr-s)"/>
+            <rect x="800" y="40" width="160" height="90" rx="12" fill="#e7f4f1" stroke="#0e6e64" stroke-width="2"/>
+            <text x="880" y="78" text-anchor="middle" font-size="15.5" font-weight="700" fill="#0a554d">KV260へ実装</text>
+            <text x="880" y="104" text-anchor="middle" font-size="12.5" fill="#57607a">ハードウェア化</text>
+            <text x="480" y="168" text-anchor="middle" font-size="14" fill="#57607a">圧縮の順序が重要です。まずスパース化して精度を回復し、量子化は最後に行います。</text>
+          </svg>
+        </div>
+        <figcaption><strong>SILRAの圧縮パイプライン。</strong>RASNAで培ったスパース化・量子化の技術を、CNNから言語モデルへ。モデルを軽くする順序と再学習の設計が、精度を守る鍵になります。</figcaption>
+      </figure>
+
+      <div class="table-scroll">
+        <table class="spec">
+          <caption>自己回帰型LLMとDiffusion LLMの違い</caption>
+          <thead class="teal"><tr><th>項目</th><th>自己回帰型LLM（現在の主流）</th><th>Diffusion LLM（SILRAの対象）</th></tr></thead>
+          <tbody>
+            <tr><th>生成方法</th><td>1トークンずつ順番に生成する</td><td>文章全体を並列に更新しながら生成する</td></tr>
+            <tr><th>計算の特徴</th><td>生成が逐次的で、並列化の余地が限られる</td><td>並列計算が多く、専用ハードウェアで高速化しやすい</td></tr>
+            <tr><th>SILRAのアプローチ</th><td>—</td><td>スパース化・量子化で軽量化し、KV260に実装する</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="table-scroll">
+        <table class="spec">
+          <caption>SILRA — モデル圧縮の検証結果</caption>
+          <tbody>
+            <tr><th>対象</th><td>小型のDiffusion LLM（拡散型言語モデル）</td></tr>
+            <tr><th>スパース率</th><td><span class="num">0.3776</span></td></tr>
+            <tr><th>Perplexity</th><td><span class="num">39.70</span>（合格基準 51.78以下）</td></tr>
+            <tr><th>検証方法</th><td>圧縮後に250ステップの再学習を行い、精度の回復を確認</td></tr>
+            <tr><th>判定</th><td><strong>検証通過</strong> — ハードウェア実装フェーズへ移行</td></tr>
+            <tr><th>実行基盤</th><td>Xilinx Kria KV260（FPGA）</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">※ Perplexityは言語モデルの予測精度を表す指標で、小さいほど良好です。数値はモデル圧縮検証フェーズにおける社内検証の結果です。</p>
+
+      <div class="points">
+        <div class="point teal"><h3><span class="k">■</span> 次世代モデルを先取り</h3><p>研究段階のDiffusion LLMを、いち早く実機実装の対象に。モデルの進化と実装技術を同時に追います。</p></div>
+        <div class="point teal"><h3><span class="k">■</span> 圧縮技術の横展開</h3><p>RASNAのスパース化・量子化の知見を言語モデルへ。CNNとLLM、両方のアクセラレーションを手がけます。</p></div>
+        <div class="point teal"><h3><span class="k">■</span> エッジでLLMを</h3><p>クラウドに頼らず手元のデバイスで言語モデルを動かす。低遅延・低コストなAIの形を追求します。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block alt" id="puwa">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label pink">05 — PUWAPUWAVOICE</p>
+        <h2>PuwaPuwaVoice<small>プワプワボイス</small></h2>
+        <p>好きなキャラクターと、電話のように話せるAI音声通話アプリ。</p>
+      </div>
+      <div class="body-text">
+        <p>PuwaPuwaVoiceは、VOICEVOXのキャラクターたちと音声で会話できるiPhone向けAI通話アプリです。ずんだもん、春日部つむぎ、四国めたん、小夜/SAYOといったキャラクターを選び、まるで電話で話すように話しかけるだけ。キャラクターごとに会話の記憶を持ち、前回の続きから自然に話せます。</p>
+        <p>会話の自然さは「応答の速さ」で決まります。当社はハードウェアアクセラレーションで培った低遅延化の知見をここにも注ぎ、話し終わってから約1秒で返事が返る会話テンポを目標に、音声認識・応答生成・音声合成のすべてを最適化しています。2026年12月24日の正式リリースに向け、現在TestFlightでベータテストを実施中です。</p>
+      </div>
+
+      <figure class="figure">
+        <div class="diagram">
+          <svg viewBox="0 0 960 208" role="img" aria-label="PuwaPuwaVoiceの会話の仕組み図">
+            <defs>
+              <marker id="arr-p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                <path d="M0,0 L10,5 L0,10 z" fill="#c2437e"/>
+              </marker>
+            </defs>
+            <rect x="315" y="4" width="330" height="36" rx="18" fill="#fdeef5"/>
+            <text x="480" y="28" text-anchor="middle" font-size="14.5" font-weight="700" fill="#9c3464">目標：話し終わってから約1秒で返事</text>
+            <rect x="0" y="64" width="160" height="90" rx="12" fill="#ffffff" stroke="#c2437e" stroke-width="2"/>
+            <text x="80" y="102" text-anchor="middle" font-size="15.5" font-weight="700" fill="#1f2430">あなたの声</text>
+            <text x="80" y="128" text-anchor="middle" font-size="12.5" fill="#57607a">マイク入力</text>
+            <line x1="164" y1="109" x2="196" y2="109" stroke="#c2437e" stroke-width="2.5" marker-end="url(#arr-p)"/>
+            <rect x="200" y="64" width="160" height="90" rx="12" fill="#ffffff" stroke="#c2437e" stroke-width="2"/>
+            <text x="280" y="102" text-anchor="middle" font-size="15.5" font-weight="700" fill="#1f2430">音声認識</text>
+            <text x="280" y="128" text-anchor="middle" font-size="12.5" fill="#57607a">音声をテキストへ</text>
+            <line x1="364" y1="109" x2="396" y2="109" stroke="#c2437e" stroke-width="2.5" marker-end="url(#arr-p)"/>
+            <rect x="400" y="64" width="160" height="90" rx="12" fill="#ffffff" stroke="#c2437e" stroke-width="2"/>
+            <text x="480" y="102" text-anchor="middle" font-size="15.5" font-weight="700" fill="#1f2430">AI応答生成</text>
+            <text x="480" y="128" text-anchor="middle" font-size="12.5" fill="#57607a">記憶と性格で応答</text>
+            <line x1="564" y1="109" x2="596" y2="109" stroke="#c2437e" stroke-width="2.5" marker-end="url(#arr-p)"/>
+            <rect x="600" y="64" width="160" height="90" rx="12" fill="#ffffff" stroke="#c2437e" stroke-width="2"/>
+            <text x="680" y="102" text-anchor="middle" font-size="15.5" font-weight="700" fill="#1f2430">音声合成</text>
+            <text x="680" y="128" text-anchor="middle" font-size="12.5" fill="#57607a">キャラクターの声を作る</text>
+            <line x1="764" y1="109" x2="796" y2="109" stroke="#c2437e" stroke-width="2.5" marker-end="url(#arr-p)"/>
+            <rect x="800" y="64" width="160" height="90" rx="12" fill="#fdeef5" stroke="#c2437e" stroke-width="2"/>
+            <text x="880" y="102" text-anchor="middle" font-size="15.5" font-weight="700" fill="#9c3464">キャラクターの声</text>
+            <text x="880" y="128" text-anchor="middle" font-size="12.5" fill="#57607a">スピーカー再生</text>
+            <text x="480" y="188" text-anchor="middle" font-size="14" fill="#57607a">速さの勝負は、全ての段階の合計。だから全段を最適化します。</text>
+          </svg>
+        </div>
+        <figcaption><strong>会話の仕組み。</strong>声を聞き取り、応答を考え、声を作って返す。この一往復の合計時間が会話の心地よさを決めます。PuwaPuwaVoiceは約1秒を目標に、各段階の高速化を進めています。</figcaption>
+      </figure>
+
+      <div class="points">
+        <div class="point pink"><h3><span class="k">■</span> キャラクターと話せる</h3><p>ずんだもん、春日部つむぎ、四国めたん、小夜/SAYO。好きなキャラクターを選んで通話できます。</p></div>
+        <div class="point pink"><h3><span class="k">■</span> 会話を覚えている</h3><p>キャラクターごとに会話の記憶を保持。昨日の続きを、今日また話せます。</p></div>
+        <div class="point pink"><h3><span class="k">■</span> 応答約1秒へ</h3><p>話し終わってから約1秒の応答を目標に、認識・生成・合成の全段を最適化しています。</p></div>
+      </div>
+
+      <div class="table-scroll">
+        <table class="spec">
+          <caption>PuwaPuwaVoice — 料金プラン（予定）</caption>
+          <thead class="pink"><tr><th>プラン</th><th>月額</th><th>1日の利用時間</th></tr></thead>
+          <tbody>
+            <tr><th>無料プラン</th><td>¥0</td><td>10分まで</td></tr>
+            <tr><th>ライト</th><td>¥500</td><td>30分</td></tr>
+            <tr><th>プラス</th><td>¥3,000</td><td>3時間</td></tr>
+            <tr><th>プロ</th><td>¥10,000</td><td>無制限</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">※ 利用時間はローリング24時間あたりの上限です。料金・内容は正式リリース時点の予定であり、変更される場合があります。</p>
+      <p style="text-align:center;margin-top:28px"><a class="button primary" href="https://puwapuwavoice.com/" target="_blank" rel="noreferrer" style="background:var(--pink)">PuwaPuwaVoice公式サイトを見る ↗</a></p>
     </div>
   </section>
 
   <section class="block" id="technology">
     <div class="wrap">
       <div class="section-head">
-        <p class="section-label">02 — TECHNOLOGY</p>
+        <p class="section-label">06 — TECHNOLOGY</p>
         <h2>From FPGA to ASIC.</h2>
         <p>実証から社会実装まで、一貫した設計思想で。</p>
       </div>
       <div class="body-text">
-        <p>FPGAによる迅速な検証、IPコア化、そしてASICへの展開を段階的に進めます。モデル圧縮（スパース化・量子化）とデータフロー最適化を組み合わせ、ワークロードの特性に合わせた専用ハードウェアを設計します。</p>
+        <p>FPGAによる迅速な検証、IPコア化、そしてASICへの展開を段階的に進めます。モデル圧縮（スパース化・量子化）とデータフロー最適化を組み合わせ、ワークロードの特性に合わせた専用ハードウェアを設計します。RASNAとSILRAは同じ検証基盤（Kria KV260）と圧縮技術を共有し、知見を互いに還流させています。</p>
       </div>
       <div class="steps">
         <div class="step">
@@ -274,59 +632,10 @@ section.block.alt .product-card{background:var(--surface)}
     </div>
   </section>
 
-  <section class="block alt" id="products">
+  <section class="block alt" id="founder">
     <div class="wrap">
       <div class="section-head">
-        <p class="section-label">03 — PRODUCTS</p>
-        <h2>主力製品</h2>
-        <p>スパイスエンジンの二本柱、RASNAとPuwaPuwaVoice。</p>
-      </div>
-      <div class="product-grid">
-
-        <article class="product-card">
-          <div class="product-visual">
-            <img src="/rasna.png" alt="RASNA のアーキテクチャ図"/>
-          </div>
-          <div class="product-body">
-            <span class="product-badge">AI ACCELERATOR</span>
-            <h3>RASNA<small>ラズナ</small></h3>
-            <p>スパース化と量子化によるモデル圧縮と、データフローアーキテクチャを組み合わせたAI推論アクセラレータです。重みと命令をチップ上に保持し、DRAMアクセスを抑えることで、エッジでの画像認識をはじめとする推論処理を低遅延・低消費電力で実行します。</p>
-            <ul>
-              <li>低遅延画像認識（レイテンシ1ms未満を目標）</li>
-              <li>帯域・メモリ最適化</li>
-              <li>FPGA実証からIPコア化、ASIC展開まで</li>
-            </ul>
-            <div class="tags"><span>SPARSITY</span><span>QUANTIZATION</span><span>DATAFLOW</span><span>FPGA / ASIC</span></div>
-          </div>
-        </article>
-
-        <article class="product-card">
-          <div class="product-visual puwa-visual" aria-hidden="true">
-            <span class="puwa-name">PuwaPuwaVoice</span>
-            <span class="puwa-sub">プワプワボイス — AI音声通話アプリ</span>
-          </div>
-          <div class="product-body">
-            <span class="product-badge">AI VOICE APP</span>
-            <h3>PuwaPuwaVoice<small>プワプワボイス</small></h3>
-            <p>好きなキャラクターと音声で会話できる、iPhone向けAI通話アプリです。ずんだもん、春日部つむぎ、四国めたん、小夜/SAYOといったVOICEVOXキャラクターと、まるで電話で話すような自然な音声通話を楽しめます。アプリ名は「PuwaPuwa」です。</p>
-            <ul>
-              <li>キャラクターとの自然な音声通話</li>
-              <li>基本無料（1日10分まで）、月額プランも用意</li>
-              <li>現在TestFlightでベータテスト中、2026年12月24日正式リリース予定</li>
-            </ul>
-            <div class="tags"><span>iPhone</span><span>VOICEVOX</span><span>AI CONVERSATION</span></div>
-            <p class="product-link"><a href="https://puwapuwavoice.com/" target="_blank" rel="noreferrer">公式サイトを見る ↗</a></p>
-          </div>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-  <section class="block" id="founder">
-    <div class="wrap">
-      <div class="section-head">
-        <p class="section-label">04 — FOUNDER</p>
+        <p class="section-label">07 — FOUNDER</p>
         <h2>代表者</h2>
       </div>
       <div class="founder-grid">
@@ -347,24 +656,25 @@ section.block.alt .product-card{background:var(--surface)}
     </div>
   </section>
 
-  <section class="block alt" id="company">
+  <section class="block" id="company">
     <div class="wrap">
       <div class="section-head">
-        <p class="section-label">05 — COMPANY</p>
+        <p class="section-label">08 — COMPANY</p>
         <h2>会社概要</h2>
       </div>
       <dl class="company-data">
-        <div><dt>会社名</dt><dd>株式会社スパイスエンジン</dd></div>
+        <div><dt>会社名</dt><dd>株式会社スパイスエンジン（Spice Engine Co., Ltd.）</dd></div>
         <div><dt>代表者</dt><dd>神宮司 明良</dd></div>
         <div><dt>設立</dt><dd>2022年5月26日</dd></div>
         <div><dt>所在地</dt><dd>〒113-0033 東京都文京区本郷6丁目25番14号</dd></div>
         <div><dt>資本金</dt><dd>100万円（資本準備金を含む）</dd></div>
         <div><dt>事業内容</dt><dd>人工知能を活用するシステムの研究および開発</dd></div>
+        <div><dt>主要事業</dt><dd>AIアクセラレータ「RASNA」の研究開発／Diffusion LLM実装「SILRA」の研究開発／AI音声通話アプリ「PuwaPuwaVoice」の開発・運営</dd></div>
       </dl>
     </div>
   </section>
 
-  <section class="block">
+  <section class="block alt">
     <div class="wrap contact-block">
       <p class="section-label">CONTACT</p>
       <h2>AIの次の可能性を、一緒に。</h2>
